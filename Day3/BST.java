@@ -39,6 +39,41 @@ public class BST {
         }
 
     }
+    public void printInorder(){
+        System.out.print("Inorder [ ");
+        printInorder(root);
+ā    }
+    private void printInorder(node temproot){
+        if (temproot!=null) {   
+            printInorder(temproot.left);
+            System.out.print(temproot.data+" ");
+            printInorder(temproot.right);
+        }
+    }
+    public void printPreorder(){
+        System.out.print("Preorder [ ");
+        printPreorder(root);
+        System.out.println(" ]");
+    }
+    private void printPreorder(node temproot){
+        if (temproot!=null) {   
+            System.out.print(temproot.data+" ");
+            printInorder(temproot.left);
+            printInorder(temproot.right);
+        }
+    }
+    public void printPostorder(){
+        System.out.print("Postorder [ ");
+        printPostorder(root);
+        System.out.println(" ]");
+    }
+    private void printPostorder(node temproot){
+        if (temproot!=null) {   
+            printInorder(temproot.left);
+            printInorder(temproot.right);
+            System.out.print(temproot.data+" ");
+        }
+    }
 
     public boolean search(int key){
         node temproot = root;
@@ -56,24 +91,17 @@ public class BST {
     }
 
 
-    // public void printleft(){
-    //     node temproot = root;
-    //     while (temproot!=null) {
-    //         System.out.println(temproot.data+ " ");
-    //         temproot = temproot.left;
-    //     }
-    // }
 
     public static void main(String[] args) {
         BST tree = new BST();
-        tree.insert(10);
-        tree.insert(16);
-        tree.insert(8);
-        tree.insert(77);
-        tree.insert(52);
-        tree.insert(48);
-        tree.insert(24);
-        tree.insert(11);
-        System.out.println(tree.search(11));
+        tree.insert(4);
+        tree.insert(5);
+        tree.insert(3);
+        tree.insert(2);
+        tree.insert(1);
+        tree.insert(6);
+        tree.printInorder();//[1 2 3 4 5 6 ]
+        tree.printPreorder();//[1 2 3 4 5 6 ]
+        tree.printPostorder();//[1 2 3 4 5 6 ]
     }
 }
